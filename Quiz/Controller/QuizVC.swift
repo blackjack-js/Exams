@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class QuizVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        // heeeeeeeeeeyyyyy
     }
 
     override func didReceiveMemoryWarning() {
