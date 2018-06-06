@@ -14,7 +14,7 @@ class HomeVC: UIViewController {
     
     var menu = Menu.fetchData()
     let cellScalling: CGFloat = 0.8
-    var subject: String = ""
+    var subjectIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +35,18 @@ class HomeVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? QuizVC {
-            destination.subject = subject
+            destination.subjectIndex = subjectIndex
         }
     }
 
 }
 
 extension HomeVC: UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return menu.count
     }
@@ -56,9 +58,10 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        subject = menu[indexPath.item].subject
+        subjectIndex = menu[indexPath.item].subjectIndex
         performSegue(withIdentifier: "GoToQuiz", sender: UICollectionViewCell.self)
     }
+    
 }
 
 extension HomeVC: UIScrollViewDelegate, UICollectionViewDelegate {
@@ -78,21 +81,6 @@ extension HomeVC: UIScrollViewDelegate, UICollectionViewDelegate {
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

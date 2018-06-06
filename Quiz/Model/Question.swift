@@ -11,26 +11,17 @@ import Foundation
 class Question {
     
     var questionText: String?
-    var firstAnswer: String?
-    var secondAnswer: String?
-    var thirdAnswer: String?
-    var fourthAnswer: String?
+    var answers: [String]?
     var correctAnswer: Int?
-    var enteredAnswer: String?
-    var correctAnswerText: String?
+    var subjectIndex: Int?
     
-    init(text: String, answer1: String, answer2: String, answer3: String, answer4: String, answer: Int) {
-        questionText = text
-        correctAnswer = answer
-        firstAnswer = answer1
-        secondAnswer = answer2
-        thirdAnswer = answer3
-        fourthAnswer = answer4
+    init(questionText: String, answers: [String], correctAnswer: Int, subjectIndex: Int) {
+        
+        self.questionText = questionText
+        self.correctAnswer = correctAnswer
+        self.answers = answers
+        self.subjectIndex = subjectIndex
+        
     }
     
-    init(text: String, correctAnswer: String, inputAnswer: String) {
-        questionText = text
-        correctAnswerText = correctAnswer
-        enteredAnswer = inputAnswer
-    }
 }

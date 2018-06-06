@@ -15,6 +15,7 @@ class HomeCell: UICollectionViewCell {
     @IBOutlet weak var questionsNumber: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var backgroundColorView: UIView!
+    @IBOutlet weak var progressBar: UIProgressView!
     
     var menu: Menu? {
         didSet {
@@ -41,11 +42,11 @@ class HomeCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.layer.cornerRadius = 8
+        self.layer.cornerRadius = 6
         layer.shadowRadius = 10
-        layer.shadowOpacity = 0.2
+        layer.shadowOpacity = 0.4
         layer.shadowOffset = CGSize(width: 5, height: 10)
-        self.clipsToBounds = true
+        self.clipsToBounds = false
         
     }
 }

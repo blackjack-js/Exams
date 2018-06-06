@@ -10,59 +10,146 @@ import UIKit
 
 class QuizVC: UIViewController {
     
+    var subjectIndex: Int?
     let allQuestions = QuestionBank()
     var currentQuestionIndex = 0
     var pickedAnswer = 0
     var score = 0
-    var subject: String = ""
+    var savedScore: [Score]? = nil
+    
+    var seconds = 60 * 30
+    var timer = Timer()
+    
+    var wrongQuestions = [String]()
+    var rightAnswer = [String]()
     
     @IBOutlet weak var answer1: UIButton!
     @IBOutlet weak var answer2: UIButton!
     @IBOutlet weak var answer3: UIButton!
     @IBOutlet weak var answer4: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var questionNumberLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var questionBackground: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        runTimer()
+        prepareUI()
     }
     
-    func updateUI() {
+    //MARK: - Flow
+    
+    func checkAnswer() {
         
-        if subject == "Mathematics" {
-            questionLabel.text = allQuestions.mathList[currentQuestionIndex].questionText
+        if pickedAnswer == allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].correctAnswer!
+        {
+            
+            score += 1
+            
         } else {
-            questionLabel.text = allQuestions.list[currentQuestionIndex].questionText
+            
+            wrongQuestions.append(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].questionText!)
+            rightAnswer.append(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers![allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].correctAnswer!])
+            
         }
         
     }
     
     func nextQuestion() {
-        currentQuestionIndex += 1
+        
+        if currentQuestionIndex < allQuestions.arrayOfSubjects[subjectIndex!].count - 1 {
+            
+            currentQuestionIndex += 1
+            
+            questionLabel.text = allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].questionText
+            
+            answer1.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[0], for: .normal)
+            answer2.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[1], for: .normal)
+            answer3.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[2], for: .normal)
+            answer4.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[3], for: .normal)
+            
+            updateUI()
+            
+        } else {
+            
+            performSegue(withIdentifier: "GoToResults", sender: self)
+            
+        }
+        
     }
     
-    func correctAnswer() {
-        if pickedAnswer == allQuestions.list[currentQuestionIndex].correctAnswer {
-            score += 1
+    func prepareUI() {
+        
+        questionBackground.tintColor = UIColor(red:0.00, green:0.69, blue:0.39, alpha:1.0)
+        
+        scoreLabel.text = "Score: \(score)"
+        
+        questionLabel.text = allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].questionText
+        
+        answer1.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[0], for: .normal)
+        answer2.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[1], for: .normal)
+        answer3.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[2], for: .normal)
+        answer4.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[3], for: .normal)
+        
+    }
+    
+    func updateUI() {
+        scoreLabel.text = "Score: \(score)"
+    }
+    
+    //MARK: - Timer
+    
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        if seconds < 1 {
+            timer.invalidate()
+            performSegue(withIdentifier: "GoToResults", sender: self)
         } else {
+            seconds -= 1
+            timeLabel.text = timeString(time: TimeInterval(seconds))
+        }
+    }
+    
+    func timeString(time:TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ResultsVC {
+            destination.score = score
+            destination.wrongQuestions = wrongQuestions
+            destination.rightAnswers = rightAnswer
+                        
+            CoreDataHandler.saveObject(score: self.score, progressBar: 0)
             
         }
     }
-    
-    @IBAction func answerBtnWasPressed(_ sender: AnyObject) {
-        if sender.tag == 1 {
-            pickedAnswer = 1
+
+    @IBAction func answer(_ sender: AnyObject) {
+        
+         if sender.tag == 1 {
+            pickedAnswer = 0
         }
         else if sender.tag == 2 {
-            pickedAnswer = 2
+            pickedAnswer = 1
         }
         else if sender.tag == 3 {
-            pickedAnswer = 3
+            pickedAnswer = 2
         }
         else if sender.tag == 4 {
-            pickedAnswer = 4
+            pickedAnswer = 3
         }
-        updateUI()
+        
+        checkAnswer()
         nextQuestion()
     }
     
