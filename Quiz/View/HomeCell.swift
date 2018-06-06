@@ -15,7 +15,6 @@ class HomeCell: UICollectionViewCell {
     @IBOutlet weak var questionsNumber: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var backgroundColorView: UIView!
-    @IBOutlet weak var progressBar: UIProgressView!
     
     var menu: Menu? {
         didSet {

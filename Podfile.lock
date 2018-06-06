@@ -1,0 +1,18 @@
+PODS:
+  - DynamicBlurView (2.0.2)
+  - PopupDialog (0.7.1):
+    - DynamicBlurView (~> 2.0)
+  - UICircularProgressRing (2.1.0)
+
+DEPENDENCIES:
+  - PopupDialog
+  - UICircularProgressRing
+
+SPEC CHECKSUMS:
+  DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
+  PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
+  UICircularProgressRing: 01b8f67bbaca7e3a83ccfa67630fe059a51211d1
+
+PODFILE CHECKSUM: 231c5e1358343b34d272bc51d41d0149b0e13257
+
+COCOAPODS: 1.4.0

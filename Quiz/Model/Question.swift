@@ -21,7 +21,6 @@ class Question {
         self.correctAnswer = correctAnswer
         self.answers = answers
         self.subjectIndex = subjectIndex
-        
     }
     
 }

@@ -38,6 +38,8 @@ class HomeVC: UIViewController {
             destination.subjectIndex = subjectIndex
         }
     }
+    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
 
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PopupDialog
 
 class QuizVC: UIViewController {
     
@@ -15,9 +16,8 @@ class QuizVC: UIViewController {
     var currentQuestionIndex = 0
     var pickedAnswer = 0
     var score = 0
-    var savedScore: [Score]? = nil
     
-    var seconds = 60 * 30
+    var seconds = 60 * 8
     var timer = Timer()
     
     var wrongQuestions = [String]()
@@ -32,6 +32,8 @@ class QuizVC: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var questionBackground: UIView!
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var exit: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +100,9 @@ class QuizVC: UIViewController {
     
     func updateUI() {
         scoreLabel.text = "Score: \(score)"
+        questionNumberLabel.text = "QUESTION \(currentQuestionIndex + 1) OUT OF \(allQuestions.arrayOfSubjects[subjectIndex!].count)"
+        
+        progressBar.setProgress(Float(currentQuestionIndex) / Float(allQuestions.arrayOfSubjects[subjectIndex!].count), animated: true)
     }
     
     //MARK: - Timer
@@ -128,12 +133,42 @@ class QuizVC: UIViewController {
             destination.score = score
             destination.wrongQuestions = wrongQuestions
             destination.rightAnswers = rightAnswer
-                        
-            CoreDataHandler.saveObject(score: self.score, progressBar: 0)
-            
+            }
         }
-    }
+        
+    
+    @IBAction func exitBtn(_ sender: Any) {
+        
+        // Prepare the popup assets
+        let title = "Do you want to quit?"
+        let message = "If you quit your progress will not be saved."
+        let popup = PopupDialog(title: title, message: message)
+        
+        // Create buttons
+        let cancel = CancelButton(title: "CANCEL") {
+        }
+            
+        // This button will not the dismiss the dialog
+        let quit = DefaultButton(title: "QUIT", dismissOnTap: true) {
+                self.dismiss(animated: true, completion: nil)
+        }
+            
+            
+            // Add buttons to dialog
+            // Alternatively, you can use popup.addButton(buttonOne)
+            // to add a single button
+        
+            popup.addButton(quit)
+            popup.addButton(cancel)
 
+            
+            // Present dialog
+            self.present(popup, animated: true, completion: nil)
+
+
+        }
+        
+    
     @IBAction func answer(_ sender: AnyObject) {
         
          if sender.tag == 1 {

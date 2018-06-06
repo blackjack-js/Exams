@@ -56,20 +56,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYB-eM-n38">
                                                     <rect key="frame" x="0.0" y="0.0" width="325" height="607"/>
-                                                    <subviews>
-                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vov-bG-OSf">
-                                                            <rect key="frame" x="8" y="541" width="309" height="4"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="4" id="ahC-pf-nQz"/>
-                                                            </constraints>
-                                                            <color key="progressTintColor" red="1" green="0.84530802201428579" blue="0.24500558035714284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </progressView>
-                                                    </subviews>
                                                     <color key="backgroundColor" red="0.066378348228571429" green="0.81994977678571423" blue="0.59793526787142848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="vov-bG-OSf" firstAttribute="leading" secondItem="eYB-eM-n38" secondAttribute="leading" constant="8" id="jZZ-RW-7bs"/>
-                                                        <constraint firstAttribute="trailing" secondItem="vov-bG-OSf" secondAttribute="trailing" constant="8" id="utU-r0-gAw"/>
-                                                    </constraints>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AsS-16-Stm">
                                                     <rect key="frame" x="32.666666666666657" y="132" width="260" height="243"/>
@@ -108,14 +95,12 @@
                                             <constraint firstItem="AsS-16-Stm" firstAttribute="centerY" secondItem="hqo-Av-ffz" secondAttribute="centerY" constant="-50" id="mtX-RO-IiI"/>
                                             <constraint firstItem="XQo-rt-HKM" firstAttribute="centerX" secondItem="AsS-16-Stm" secondAttribute="centerX" id="o3W-X2-3bJ"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="1vh-gG-AEs" secondAttribute="bottom" constant="12" id="pod-F9-Ldn"/>
-                                            <constraint firstItem="vov-bG-OSf" firstAttribute="top" secondItem="XQo-rt-HKM" secondAttribute="bottom" constant="100" id="sNP-Sh-Dse"/>
                                             <constraint firstAttribute="bottom" secondItem="eYB-eM-n38" secondAttribute="bottom" id="w3j-9n-sYu"/>
                                             <constraint firstAttribute="trailing" secondItem="eYB-eM-n38" secondAttribute="trailing" id="wiE-45-Bhw"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="backgroundColorView" destination="eYB-eM-n38" id="zNj-Tm-4eC"/>
                                             <outlet property="featuredImage" destination="AsS-16-Stm" id="LoP-dq-l5o"/>
-                                            <outlet property="progressBar" destination="vov-bG-OSf" id="iYR-on-SA8"/>
                                             <outlet property="questionsNumber" destination="1vh-gG-AEs" id="PVo-bb-fFf"/>
                                             <outlet property="subject" destination="XQo-rt-HKM" id="FvI-24-OFP"/>
                                             <outlet property="time" destination="cet-2x-t2s" id="dX1-sz-wgZ"/>
@@ -228,6 +213,9 @@
                                         <state key="normal" image="Combined Shape">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="exitBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FDY-Sm-Fvj"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kv7-p4-HBg">
                                         <rect key="frame" x="239.66666666666663" y="272.66666666666669" width="141.33333333333337" height="19.333333333333314"/>
@@ -235,12 +223,20 @@
                                         <color key="textColor" white="0.94380580359999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8gi-ja-arF">
+                                        <rect key="frame" x="15" y="307" width="384" height="6"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="6" id="chn-0p-0DL"/>
+                                        </constraints>
+                                        <color key="progressTintColor" red="1" green="0.84530802199999999" blue="0.24500558040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </progressView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.80613839285714284" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.066378348229999995" green="0.81994977680000003" blue="0.59793526789999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="kv7-p4-HBg" firstAttribute="leading" secondItem="t1Y-Cv-aRC" secondAttribute="trailing" constant="10" id="9fh-ct-oHN"/>
                                     <constraint firstItem="kv7-p4-HBg" firstAttribute="centerY" secondItem="t1Y-Cv-aRC" secondAttribute="centerY" id="CYV-UW-LLh"/>
                                     <constraint firstItem="Bl0-9D-KHD" firstAttribute="leading" secondItem="w6w-8T-qll" secondAttribute="leading" constant="20" id="GrR-Cb-QqA"/>
+                                    <constraint firstItem="8gi-ja-arF" firstAttribute="leading" secondItem="w6w-8T-qll" secondAttribute="leading" constant="15" id="H3c-Z6-ehk"/>
                                     <constraint firstItem="ob7-aB-LhW" firstAttribute="top" secondItem="xPV-eA-P6h" secondAttribute="bottom" constant="10.333332061767578" id="HXk-Y4-cuE"/>
                                     <constraint firstItem="ob7-aB-LhW" firstAttribute="centerY" secondItem="w6w-8T-qll" secondAttribute="centerY" multiplier="1.2" id="LL4-79-cmX"/>
                                     <constraint firstAttribute="trailing" secondItem="kv7-p4-HBg" secondAttribute="trailing" constant="33" id="StI-EX-i0P"/>
@@ -251,6 +247,7 @@
                                     <constraint firstItem="t1Y-Cv-aRC" firstAttribute="centerX" secondItem="ob7-aB-LhW" secondAttribute="centerX" id="m54-ep-rZZ"/>
                                     <constraint firstItem="Bl0-9D-KHD" firstAttribute="top" secondItem="w6w-8T-qll" secondAttribute="top" constant="35" id="nDx-PV-fVO"/>
                                     <constraint firstItem="ob7-aB-LhW" firstAttribute="height" secondItem="w6w-8T-qll" secondAttribute="height" multiplier="0.36" id="qwr-UD-dSn"/>
+                                    <constraint firstAttribute="trailing" secondItem="8gi-ja-arF" secondAttribute="trailing" constant="15" id="zsu-sb-r4A"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -263,6 +260,7 @@
                             <constraint firstItem="w6w-8T-qll" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.45" id="Sjc-ZT-el9"/>
                             <constraint firstItem="0Fw-Ui-ave" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="YUs-bF-XLN"/>
                             <constraint firstItem="w6w-8T-qll" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="foj-YG-TJz"/>
+                            <constraint firstItem="0Fw-Ui-ave" firstAttribute="top" secondItem="8gi-ja-arF" secondAttribute="bottom" constant="28.333333333333258" id="jqc-hl-hVy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Fw-Ui-ave" secondAttribute="trailing" constant="10" id="wjb-eq-IUA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -272,6 +270,8 @@
                         <outlet property="answer2" destination="zRx-F4-rPc" id="CYX-m4-sH0"/>
                         <outlet property="answer3" destination="UP6-Z3-mSl" id="LdO-yz-MdE"/>
                         <outlet property="answer4" destination="fs7-1t-7UL" id="4SA-ZS-3vQ"/>
+                        <outlet property="exit" destination="Bl0-9D-KHD" id="Y2S-Vd-Hvv"/>
+                        <outlet property="progressBar" destination="8gi-ja-arF" id="SwD-Av-Ppd"/>
                         <outlet property="questionBackground" destination="w6w-8T-qll" id="rzw-s8-lt9"/>
                         <outlet property="questionLabel" destination="ob7-aB-LhW" id="Sy6-2c-VBf"/>
                         <outlet property="questionNumberLabel" destination="xPV-eA-P6h" id="kxQ-gq-CwG"/>
@@ -295,17 +295,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRD-47-WAV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ey2-ya-twF">
-                                        <rect key="frame" x="184" y="168" width="46" height="32.666666666666657"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huj-Yc-nAH">
+                                        <rect key="frame" x="124.33333333333333" y="124.66666666666666" width="165.66666666666669" height="119.66666666666666"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                        <color key="textColor" red="1" green="0.84530802199999999" blue="0.24500558040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.8061383929" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.066378348229999995" green="0.81994977680000003" blue="0.59793526789999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Ey2-ya-twF" firstAttribute="centerX" secondItem="tRD-47-WAV" secondAttribute="centerX" id="6Ch-LK-OjA"/>
-                                    <constraint firstItem="Ey2-ya-twF" firstAttribute="centerY" secondItem="tRD-47-WAV" secondAttribute="centerY" id="S2p-PS-x7Q"/>
+                                    <constraint firstItem="huj-Yc-nAH" firstAttribute="centerX" secondItem="tRD-47-WAV" secondAttribute="centerX" id="Khv-sq-Mlj"/>
+                                    <constraint firstItem="huj-Yc-nAH" firstAttribute="centerY" secondItem="tRD-47-WAV" secondAttribute="centerY" id="SYR-A5-4nX"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uma-fL-86a">
@@ -396,10 +396,12 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="5xt-wx-PdZ" id="QkY-gM-rN0"/>
-                        <outlet property="scoreLabel" destination="Ey2-ya-twF" id="Tjz-M4-KwF"/>
+                        <outlet property="scoreLabel" destination="huj-Yc-nAH" id="wf2-W4-KeC"/>
+                        <segue destination="Jck-MT-wsi" kind="unwind" identifier="unwindSegueToVC1" unwindAction="unwindToVC1WithSegue:" id="cmD-KG-St6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcX-vQ-B2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Jck-MT-wsi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="650.72463768115949" y="132.88043478260872"/>
         </scene>

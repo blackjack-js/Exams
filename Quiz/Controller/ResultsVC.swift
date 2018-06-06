@@ -8,25 +8,26 @@
 
 import UIKit
 
-class ResultsVC: UIViewController {
+class ResultsVC: UIViewController, UICircularProgressRingDelegate {
     
     var score = 0
     
     var wrongQuestions: [String]?
     var rightAnswers: [String]?
     
-    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scoreLabel.text = "\(score)/10"
         collectionView.dataSource = self
+        
         }
     
-    
     @IBAction func exit(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
     }
     
 }
