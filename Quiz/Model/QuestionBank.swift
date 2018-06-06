@@ -23,16 +23,25 @@ class QuestionBank {
         
         //MARK: - MATH
         
-        Mathematics.append(Question(questionText: "19 + … = 42", answers: ["23", "61", "0", "42"], correctAnswer: 0, subjectIndex: 0))
-        Mathematics.append(Question(questionText: "What is the symbol of pi??", answers: ["€", "π", "Ω", "∞"], correctAnswer: 1, subjectIndex: 0))
-        Mathematics.append(Question(questionText: "Arrange the numbers in ascending order: 36, 12, 29, 21, 7.", answers: ["36, 29, 21, 12, 7", "36, 29, 7, 21, 12", "7, 12, 21, 29, 36", "None of these"], correctAnswer: 2, subjectIndex: 0))
-        Mathematics.append(Question(questionText: "What is the greatest two digit number?", answers: ["10", "90", "11", "99"], correctAnswer: 3, subjectIndex: 0))
-        Mathematics.append(Question(questionText: "How much is 90 – 19?", answers: ["71", "109", "89", "None of these"], correctAnswer: 0, subjectIndex: 0))
-        Mathematics.append(Question(questionText: "20 is divisible by ………", answers: ["1", "3", "7", "None of these"], correctAnswer: 0, subjectIndex: 0))
-        Mathematics.append(Question(questionText: "Find the value of x; if x = (2 × 3) + 11.", answers: ["55", "192", "17", "66"], correctAnswer: 2, subjectIndex: 0))
-        Mathematics.append(Question(questionText: "What is the smallest three digit number?", answers: ["100", "999", "111", "101"], correctAnswer: 0, subjectIndex: 0))
-        Mathematics.append(Question(questionText: "How much is 190 – 87 + 16?", answers: ["103", "261", "87", "119"], correctAnswer: 3, subjectIndex: 0))
-        Mathematics.append(Question(questionText: "What is 1000 × 1 equal to?", answers: ["1", "1000", "0", "None of these"], correctAnswer: 1, subjectIndex: 0))
+        Mathematics.append(Question(questionText: "Solve for x: 2log x - log (30- 2x) = 1", answers: ["-30", "15", "12", "10"], correctAnswer: 3, subjectIndex: 0))
+        
+        Mathematics.append(Question(questionText: "The equation of a circle is given as x^2 + y^2 – 6x + 4y – 12 = 0, find its center?", answers: ["C(3,2)", "C(-3,2)", "C(-3,-2)", "C(3,-2)"], correctAnswer: 3, subjectIndex: 0))
+        
+        Mathematics.append(Question(questionText: "A stone is dropped into a deep well and is heard to hit the water 3.41 sec after being dropped. Determine the depth of the well.", answers: ["52.3 m", "57 m", "-52.3 m", "-57 m"], correctAnswer: 3, subjectIndex: 0))
+        
+        Mathematics.append(Question(questionText: "A piece of wire is 12 in. long. The wire is cut into two pieces and then each piece is bent into a square. Find the length of the longer piece if the sum of the areas of these two squares is to be 3.5 in^2.", answers: ["7", "6", "5", "4"], correctAnswer: 1, subjectIndex: 0))
+        
+        Mathematics.append(Question(questionText: "What are the radius, r, and height h, of cylindrical oil that can holds 5 liters of oil but must have minimum surface area?", answers: ["R = 9.27cm; h = 18.53cm", "R = 1.26cm; h = 20.83cm", "R = 5.4cm; h = 18.53cm", "R = 15.9cm; h = 12.56cm"], correctAnswer: 0, subjectIndex: 0))
+        
+        Mathematics.append(Question(questionText: "For a given numbers (2, 2, 3, 6, 9), find the standard deviation of sample?", answers: ["1.73", "0.04", "1.14", "2.73"], correctAnswer: 3, subjectIndex: 0))
+        
+        Mathematics.append(Question(questionText: "Enriv wants to make a 100 ml vodka of 5% alcohol solution mixing a quantity of a 2% water solution with 7% alcohol solution. What are the quantities of each of the two solution (2% & 7%) he has to use?", answers: ["25:75", "50:50", "30:70", "40:60"], correctAnswer: 3, subjectIndex: 0))
+        
+        Mathematics.append(Question(questionText: "If x increases uniformly at the rate of 0.01 ft/sec, at what rate is the expression (2 + x )^3 increasing when x becomes 8 feet?", answers: ["2 cfs", "3 cfs", "4 cfs", "5 cfs"], correctAnswer: 1, subjectIndex: 0))
+        
+        Mathematics.append(Question(questionText: "Double my number and subtract 9; then you will get 67. What is my number?", answers: ["25", "38", "37", "27"], correctAnswer: 1, subjectIndex: 0))
+        
+        Mathematics.append(Question(questionText: "The ratio between the perimeter and the width of a rectangle is 14 : 3. If the area of the rectangle is 108 sq. cm, what is the length of the rectangle?", answers: ["18", "9", "12", "24"], correctAnswer: 2, subjectIndex: 0))
         
          //MARK: - CHEM
         
@@ -101,9 +110,9 @@ class QuestionBank {
         
         SAT.append(Question(questionText: "Which of the following is the newest element to be discovered and synthesised?", answers: ["Flerovium", "Ununpentium", "Livermorium", "Ununseptium"], correctAnswer: 3, subjectIndex: 3))
         
-        SAT.append(Question(questionText: "What's the capital of China?", answers: ["Hong Kong", "Bejjing", "Taiwan", "Shanghai"], correctAnswer: 1, subjectIndex: 3))
+        SAT.append(Question(questionText: "A stone is dropped into a deep well and is heard to hit the water 3.41 sec after being dropped. Determine the depth of the well.", answers: ["52.3 m", "57 m", "-52.3 m", "-57 m"], correctAnswer: 3, subjectIndex: 3))
         
-        SAT.append(Question(questionText: "20 is divisible by ____", answers: ["1", "3", "7", "None of these"], correctAnswer: 0, subjectIndex: 3))
+        SAT.append(Question(questionText: "A piece of wire is 12 in. long. The wire is cut into two pieces and then each piece is bent into a square. Find the length of the longer piece if the sum of the areas of these two squares is to be 3.5 in^2.", answers: ["7", "6", "5", "4"], correctAnswer: 1, subjectIndex: 3))
             
         SAT.append(Question(questionText: "It refers to the use of microorganisms, such as bacteria or yeasts, or biological substances, such as enzymes, to perform specific industrial or manufacturing processes.", answers: ["Biotechniques", "Biochemistry", "Biotechnology", "Bioessence"], correctAnswer: 2, subjectIndex: 3))
         
@@ -117,7 +126,7 @@ class QuestionBank {
         
         SAT.append(Question(questionText: "The Oot Cloud is believed to be", answers: ["A grouping of asteroids and meteoroids between the orbits of Mars and Jupiter","The gerat nebula found just below the belt stars of Orion.", "A spherical cloud of cometary nuclei far beyond the Kuiper Belt", "The circular disk of gas around the Sun's equator from which the planets formed"], correctAnswer: 2, subjectIndex: 3))
         
-        SAT.append(Question(questionText: "The Oot Cloud is believed to be", answers: ["A grouping of asteroids and meteoroids between the orbits of Mars and Jupiter","The gerat nebula found just below the belt stars of Orion.", "A spherical cloud of cometary nuclei far beyond the Kuiper Belt", "The circular disk of gas around the Sun's equator from which the planets formed"], correctAnswer: 2, subjectIndex: 3))
+        SAT.append(Question(questionText: "The ratio between the perimeter and the width of a rectangle is 14 : 3. If the area of the rectangle is 108 sq. cm, what is the length of the rectangle?", answers: ["18", "9", "12", "24"], correctAnswer: 2, subjectIndex: 3))
 
         
         

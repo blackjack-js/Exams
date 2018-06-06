@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultsVC: UIViewController, UICircularProgressRingDelegate {
+class ResultsVC: UIViewController {
     
     var score = 0
     
