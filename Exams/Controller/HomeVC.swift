@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeVC: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var menu = Menu.fetchData()
@@ -18,7 +18,10 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        prepareUI()
+    }
+    
+    func prepareUI() {
         let screenSize = UIScreen.main.bounds.size
         let cellWidth = floor(screenSize.width * cellScalling)
         let cellHeight = floor(screenSize.height * cellScalling)
@@ -31,8 +34,9 @@ class HomeVC: UIViewController {
         
         collectionView?.dataSource = self
         collectionView.delegate = self
+        
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? QuestionsVC {
             destination.subjectIndex = subjectIndex
@@ -40,11 +44,11 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
-
 }
 
+
+
 extension HomeVC: UICollectionViewDataSource {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -56,6 +60,19 @@ extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
         cell.menu = menu[indexPath.item]
+        
+        cell.contentView.layer.cornerRadius = 8.0
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor.clear.cgColor
+        cell.contentView.layer.masksToBounds = true;
+        
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
+        cell.layer.shadowRadius = 2.0
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.masksToBounds = false;
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+
         return cell
     }
     
@@ -63,12 +80,11 @@ extension HomeVC: UICollectionViewDataSource {
         subjectIndex = menu[indexPath.item].subjectIndex
         performSegue(withIdentifier: "GoToQuiz", sender: UICollectionViewCell.self)
     }
-    
 }
 
+
+
 extension HomeVC: UIScrollViewDelegate, UICollectionViewDelegate {
-    
-    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -80,10 +96,7 @@ extension HomeVC: UIScrollViewDelegate, UICollectionViewDelegate {
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
     }
-    
-    
 }
-
 
 
 
