@@ -396,6 +396,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="5xt-wx-PdZ" id="QkY-gM-rN0"/>
+                        <outlet property="resultBackgroundColor" destination="tRD-47-WAV" id="rRP-Cf-vFn"/>
                         <outlet property="scoreLabel" destination="huj-Yc-nAH" id="wf2-W4-KeC"/>
                         <segue destination="Jck-MT-wsi" kind="unwind" identifier="unwindSegueToVC1" unwindAction="unwindToVC1WithSegue:" id="cmD-KG-St6"/>
                     </connections>

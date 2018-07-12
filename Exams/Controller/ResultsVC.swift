@@ -13,16 +13,21 @@ class ResultsVC: UIViewController {
     var score = 0
     var wrongQuestions: [String]?
     var rightAnswers: [String]?
+    var subjectColor: UIColor?
     let cellScalling: CGFloat = 0.95
     let cellHeightScalling: CGFloat = 0.2
 
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var resultBackgroundColor: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        prepareUI()
+        }
+    
+    func prepareUI() {
         let screenSize = UIScreen.main.bounds.size
         let cellWidth = floor(screenSize.width * cellScalling)
         let cellHeight = floor(screenSize.height * cellHeightScalling)
@@ -34,8 +39,7 @@ class ResultsVC: UIViewController {
         
         scoreLabel.text = "\(score)/10"
         collectionView.dataSource = self
-        
-        }
+    }
     
     @IBAction func exit(_ sender: AnyObject) {
         performSegue(withIdentifier: "unwindSegueToVC1", sender: self)

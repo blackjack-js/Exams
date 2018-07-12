@@ -15,6 +15,7 @@ class HomeVC: UIViewController {
     var menu = Menu.fetchData()
     let cellScalling: CGFloat = 0.8
     var subjectIndex: Int?
+    var subjectColor: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class HomeVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? QuestionsVC {
             destination.subjectIndex = subjectIndex
+            destination.subjectColor = subjectColor
         }
     }
     
@@ -78,6 +80,7 @@ extension HomeVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         subjectIndex = menu[indexPath.item].subjectIndex
+        subjectColor = menu[indexPath.item].color
         performSegue(withIdentifier: "GoToQuiz", sender: UICollectionViewCell.self)
     }
 }

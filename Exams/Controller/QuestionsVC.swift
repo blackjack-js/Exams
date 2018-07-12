@@ -11,6 +11,7 @@ import UIKit
 class QuestionsVC: UIViewController {
     
     var subjectIndex: Int?
+    var subjectColor: UIColor?
     let allQuestions = QuestionBank()
     var currentQuestionIndex = 0
     var pickedAnswer = 0
@@ -39,37 +40,22 @@ class QuestionsVC: UIViewController {
         updateUI()
         runTimer()
         prepareUI()
-        answer1.titleLabel?.minimumScaleFactor = 0.5
-        answer2.titleLabel?.minimumScaleFactor = 0.5
-        answer3.titleLabel?.minimumScaleFactor = 0.5
-        answer4.titleLabel?.minimumScaleFactor = 0.5
-        answer1.titleLabel?.adjustsFontSizeToFitWidth = true
-        answer2.titleLabel?.adjustsFontSizeToFitWidth = true
-        answer3.titleLabel?.adjustsFontSizeToFitWidth = true
-        answer4.titleLabel?.adjustsFontSizeToFitWidth = true
-
     }
     
     //MARK: - Flow
     
     func checkAnswer() {
-        
         if pickedAnswer == allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].correctAnswer!
         {
-            
             score += 1
             
         } else {
-            
-            wrongQuestions.append(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].questionText!)
+        wrongQuestions.append(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].questionText!)
             rightAnswer.append(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers![allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].correctAnswer!])
-            
         }
-        
     }
     
     func nextQuestion() {
-        
         if currentQuestionIndex < allQuestions.arrayOfSubjects[subjectIndex!].count - 1 {
             
             currentQuestionIndex += 1
@@ -82,28 +68,31 @@ class QuestionsVC: UIViewController {
             answer4.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[3], for: .normal)
             
             updateUI()
-            
         } else {
-            
             performSegue(withIdentifier: "GoToResults", sender: self)
-            
         }
-        
     }
     
     func prepareUI() {
-        
-        questionBackground.tintColor = UIColor(red:0.00, green:0.69, blue:0.39, alpha:1.0)
+        questionBackground.tintColor = subjectColor
         
         scoreLabel.text = "Score: \(score)"
         
         questionLabel.text = allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].questionText
         
+        answer1.titleLabel?.minimumScaleFactor = 0.5
+        answer2.titleLabel?.minimumScaleFactor = 0.5
+        answer3.titleLabel?.minimumScaleFactor = 0.5
+        answer4.titleLabel?.minimumScaleFactor = 0.5
+        answer1.titleLabel?.adjustsFontSizeToFitWidth = true
+        answer2.titleLabel?.adjustsFontSizeToFitWidth = true
+        answer3.titleLabel?.adjustsFontSizeToFitWidth = true
+        answer4.titleLabel?.adjustsFontSizeToFitWidth = true
+        
         answer1.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[0], for: .normal)
         answer2.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[1], for: .normal)
         answer3.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[2], for: .normal)
         answer4.setTitle(allQuestions.arrayOfSubjects[subjectIndex!][currentQuestionIndex].answers?[3], for: .normal)
-        
     }
     
     func updateUI() {
@@ -141,19 +130,17 @@ class QuestionsVC: UIViewController {
             destination.score = score
             destination.wrongQuestions = wrongQuestions
             destination.rightAnswers = rightAnswer
+            destination.subjectColor = subjectColor
             }
         }
         
     
-    @IBAction func exitBtn(_ sender: Any) {        
-      
+    @IBAction func exitBtn(_ sender: Any) {
                 self.dismiss(animated: true, completion: nil)
-       
         }
         
     
     @IBAction func answer(_ sender: AnyObject) {
-        
          if sender.tag == 1 {
             pickedAnswer = 0
         }
